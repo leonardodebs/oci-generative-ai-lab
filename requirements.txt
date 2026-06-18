@@ -1,0 +1,23 @@
+# OCI Generative AI Lab — dependências
+
+# SDK da Oracle Cloud (Generative AI Inference, config, auth)
+oci>=2.126.0
+
+# Índice vetorial local para o RAG
+faiss-cpu>=1.8.0
+numpy>=1.26.0
+
+# Comparação multicloud (opcionais — só se houver credenciais)
+boto3>=1.34.0                    # AWS Bedrock
+anthropic>=0.34.0               # Claude (uso direto, opcional)
+google-cloud-aiplatform>=1.60.0 # GCP Vertex AI (Gemini)
+
+# Utilidades
+python-dotenv>=1.0.0
+rich>=13.7.0
+
+# Backend do mini-app de chat (web/)
+flask>=3.0.0
+
+# Testes
+pytest>=8.0.0
