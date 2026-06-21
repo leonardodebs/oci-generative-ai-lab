@@ -1,0 +1,14 @@
+schema_version: 20180708
+name: genai-trigger
+version: 0.0.1
+runtime: python
+build_image: fnproject/python:3.11-dev
+run_image: fnproject/python:3.11
+entrypoint: /python/bin/fdk /function/func.py handler
+memory: 512
+timeout: 120
+config:
+  # Definidos no deploy ou via 'fn config function ...'.
+  # OCI_COMPARTMENT_ID: ocid1.compartment.oc1..xxxx
+  # OCI_CHAT_MODEL: cohere.command-r-plus
+  # OCI_REGION: sa-saopaulo-1
