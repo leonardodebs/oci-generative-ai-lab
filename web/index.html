@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--
+  Mini-app de chat — oci-generative-ai-lab (Opção B).
+  Front estático que conversa com o backend Flask (src/server.py), o qual chama
+  o OCI Generative AI com as credenciais no lado seguro. Rode `make serve` e
+  acesse http://127.0.0.1:5000.
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OCI Generative AI — Chat & RAG</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <span class="badge">Portfólio Multicloud · IA</span>
+      <h1>OCI <span class="arrow">·</span> Generative AI</h1>
+      <p class="sub">
+        Chat e <strong>RAG</strong> sobre runbooks de SRE usando o
+        <strong>OCI Generative AI</strong> (Cohere Command R+ / Llama 3).
+        As credenciais ficam no backend — o navegador só fala com a API local.
+      </p>
+      <div class="health" id="health">verificando ambiente…</div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <nav class="modos">
+      <button class="modo ativo" data-modo="chat">Chat</button>
+      <button class="modo" data-modo="rag">RAG (runbooks)</button>
+    </nav>
+
+    <section class="config" id="config-chat">
+      <label for="modelo">Modelo:</label>
+      <select id="modelo">
+        <option value="cohere.command-r-plus">cohere.command-r-plus</option>
+        <option value="meta.llama-3-70b-instruct">meta.llama-3-70b-instruct</option>
+      </select>
+    </section>
+
+    <section class="chat-box">
+      <div id="mensagens" class="mensagens">
+        <div class="msg bot">
+          <div class="bolha">
+            Olá! Pergunte algo sobre infraestrutura. No modo <b>RAG</b> eu
+            respondo com base nos runbooks (ex.: <i>"Como fazer failover do RDS?"</i>).
+          </div>
+        </div>
+      </div>
+
+      <form id="form" class="entrada">
+        <textarea id="prompt" rows="2"
+          placeholder="Explique NAT Gateway vs Internet Gateway…"></textarea>
+        <button id="enviar" type="submit">Enviar</button>
+      </form>
+    </section>
+
+    <p class="rodape">
+      Custo: <strong>US$ 0,00</strong> (OCI Always Free / créditos) ·
+      <a href="https://docs.oracle.com/iaas/Content/generative-ai/home.htm"
+         target="_blank" rel="noopener">OCI Generative AI</a>
+    </p>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
