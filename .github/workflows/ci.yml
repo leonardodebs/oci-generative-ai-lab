@@ -1,0 +1,31 @@
+# CI — roda a suíte de testes (pytest) a cada push e pull request.
+# Gratuito para repositórios públicos. Não chama o OCI Generative AI nem
+# AWS/GCP: exercita apenas a lógica determinística com fakes de SDK
+# (não consome créditos de nenhuma nuvem).
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependências de teste
+        # numpy e flask são exigidos pelos testes de RAG e do backend;
+        # os SDKs pesados de nuvem (oci, faiss, boto3) são mockados.
+        run: pip install pytest numpy flask
+
+      - name: Rodar testes
+        run: python -m pytest -q
