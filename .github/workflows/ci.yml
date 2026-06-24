@@ -25,7 +25,7 @@ jobs:
       - name: Instalar dependências de teste
         # numpy e flask são exigidos pelos testes de RAG e do backend;
         # os SDKs pesados de nuvem (oci, faiss, boto3) são mockados.
-        run: pip install pytest numpy flask
+        run: pip install pytest numpy flask python-dotenv
 
       - name: Rodar testes
         run: python -m pytest -q
